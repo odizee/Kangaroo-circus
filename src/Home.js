@@ -4,10 +4,13 @@ import './style.css'
 
 function Home() {
 
+//States
 const [result, setResult, resultRef] = useState("Input numbers below")
 const [numbers, setNumbers, numbersRef] = useState("");
 const [history, setHistory, historyRef] = useState(JSON.parse(localStorage.getItem("Result")) || []);
+
 let errorsObj = {input: ''}
+
 const [formValid, setFormValid] = useState(errorsObj)
 
 function kangaroo(x1, v1, x2, v2) {
@@ -17,18 +20,16 @@ function kangaroo(x1, v1, x2, v2) {
     if(x2 > x1 && v2 > v1) return result = "NO";
     if(x2 < x1 && v2 < v1) return result = "NO";
     if((x1 - x2)/(v2 - v1) % 1 === 0) return result = "YES";
-    return result = "NO";
-    
-    
+    return result = "NO";  
 }
 
   const output = [...numbers] 
-  let x1 = parseInt(output[0])
-  let v1 = parseInt(output[1])
-  let x2 = parseInt(output[2])
-  let v2 = parseInt(output[3])
+  let x1 = output[0]
+  let v1 = output[1]
+  let x2 = output[2]
+  let v2 = output[3]
 
-  async function handleSubmit (event) {
+  function handleSubmit (event) {
     event.preventDefault();
     let error = false;
     const errorObj = { ...errorsObj }
@@ -46,7 +47,7 @@ function kangaroo(x1, v1, x2, v2) {
         setResult(kangaroo(x1, v1, x2, v2))
 
         let added = [[output, resultRef.current]].concat(historyRef.current)
-        await setHistory(added)
+        setHistory(added)
         
         
         localStorage.setItem('Result', JSON.stringify(historyRef.current));
@@ -55,28 +56,13 @@ function kangaroo(x1, v1, x2, v2) {
 
   }
 
-  console.log(numbers.length)
-
-  const [outputs, setOutputs] = useState() 
-    
-    useEffect(() => {
-        setOutputs(results)
-    }, [])
-    
-    let results;
-
-    if(localStorage.getItem("Result")){
-        results = JSON.parse(localStorage.getItem("Result"))
-    }else  {
-        results = []
-    }
 
   return (
     <div className="home">
       <div className="result">
         <h3>
             Output: 
-        <span> {result}</span>
+        <span>{result}</span>
         </h3>
       </div>
       <div className="form">

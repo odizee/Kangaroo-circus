@@ -1,9 +1,8 @@
-import { useEffect } from "react";
-import useState from 'react-usestateref'
 import History from "./History";
 import Home from "./Home";
+
 //Router
-import { Switch, Route, useLocation, Routes } from "react-router-dom";
+import {Route, Routes } from "react-router-dom";
 
 
 function App() {

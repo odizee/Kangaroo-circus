@@ -1,19 +1,15 @@
 import { useState } from 'react'
 import { useEffect } from 'react'
-import data from './initData'
 
 function History() {
     const [output, setOutput] = useState() 
     
     useEffect(() => {
-        let result;
         
-        if(localStorage.getItem("Result")){
-            result = JSON.parse(localStorage.getItem("Result"))
-        }else  {
-            result = []
-        }
+        let result = JSON.parse(localStorage.getItem("Result"))
+
         setOutput(result)
+
     }, [])
     
 
@@ -43,7 +39,7 @@ function History() {
                         <td>NO</td>
                     </tr>
                 {
-                    output?.map((result,i) =>(
+                    output?.slice(0).reverse().map((result,i) =>(
                     <tr key={i}>
                         {
                         result.map((num,j)=>
