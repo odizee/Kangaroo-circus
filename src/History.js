@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useEffect } from 'react'
-// import './style.css'
-
+import data from './initData'
 
 function History() {
     const [output, setOutput] = useState() 
@@ -31,6 +30,18 @@ function History() {
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>2345</td>
+                        <td>NO</td>
+                    </tr>
+                    <tr>
+                        <td>9784</td>
+                        <td>NO</td>
+                    </tr>
+                    <tr>
+                        <td>9784</td>
+                        <td>NO</td>
+                    </tr>
                 {
                     output?.map((result,i) =>(
                     <tr key={i}>

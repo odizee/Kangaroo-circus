@@ -6,7 +6,7 @@ function Home() {
 
 const [result, setResult, resultRef] = useState("Input numbers below")
 const [numbers, setNumbers, numbersRef] = useState("");
-const [history, setHistory, historyRef] = useState([]);
+const [history, setHistory, historyRef] = useState(JSON.parse(localStorage.getItem("Result")) || []);
 let errorsObj = {input: ''}
 const [formValid, setFormValid] = useState(errorsObj)
 
